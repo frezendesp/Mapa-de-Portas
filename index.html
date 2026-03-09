@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mapa de Portas e Serviços</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Mapa de Portas e Serviços</h1>
+      <p>Cadastre ativos de rede, crie macro-serviços e visualize o caminho do cliente até o servidor.</p>
+    </header>
+
+    <main>
+      <section class="panel">
+        <h2>Cadastro de ativos</h2>
+
+        <form id="asset-form" class="grid-form">
+          <label>
+            Tipo
+            <select id="asset-type" required>
+              <option value="client">Cliente</option>
+              <option value="network">Rede</option>
+              <option value="gateway">Gateway</option>
+              <option value="firewall">Firewall</option>
+              <option value="server">Servidor</option>
+              <option value="device">Outro dispositivo</option>
+            </select>
+          </label>
+          <label>
+            Nome
+            <input id="asset-name" type="text" placeholder="Ex: Cliente RH" required />
+          </label>
+          <label>
+            Detalhes
+            <input id="asset-details" type="text" placeholder="Ex: VLAN 20 / 10.0.20.10" />
+          </label>
+          <button type="submit">Adicionar ativo</button>
+        </form>
+
+        <ul id="asset-list" class="list"></ul>
+      </section>
+
+      <section class="panel">
+        <h2>Cadastro de serviços</h2>
+
+        <form id="service-form" class="grid-form">
+          <label>
+            Nome do serviço
+            <input id="service-name" type="text" placeholder="Ex: Broker" required />
+          </label>
+          <label>
+            Porta
+            <input id="service-port" type="number" placeholder="Ex: 22100" required min="1" max="65535" />
+          </label>
+          <label>
+            Servidor de destino
+            <select id="service-server" required></select>
+          </label>
+          <button type="submit">Adicionar serviço</button>
+        </form>
+
+        <form id="macro-form" class="grid-form compact">
+          <label>
+            Nome do macro-serviço
+            <input id="macro-name" type="text" placeholder="Ex: Protheus" required />
+          </label>
+          <label>
+            Serviços incluídos
+            <select id="macro-services" multiple required></select>
+            <small>Segure Ctrl/Cmd para selecionar mais de um.</small>
+          </label>
+          <button type="submit">Criar macro-serviço</button>
+        </form>
+
+        <div class="split">
+          <div>
+            <h3>Serviços</h3>
+            <ul id="service-list" class="list"></ul>
+          </div>
+          <div>
+            <h3>Macro-serviços</h3>
+            <ul id="macro-list" class="list"></ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Vínculos e mapa de acesso</h2>
+
+        <form id="flow-form" class="grid-form">
+          <label>
+            Cliente
+            <select id="flow-client" required></select>
+          </label>
+          <label>
+            Rede de origem
+            <select id="flow-network" required></select>
+          </label>
+          <label>
+            Serviço/Macro-serviço
+            <select id="flow-service" required></select>
+          </label>
+          <label>
+            Caminho (gateways/firewalls/dispositivos)
+            <select id="flow-path" multiple required></select>
+            <small>Ordem importa: o primeiro será o primeiro salto.</small>
+          </label>
+          <button type="submit">Salvar fluxo</button>
+        </form>
+
+        <ul id="flow-list" class="list"></ul>
+
+        <article class="map">
+          <h3>Mapa visual (seleção rápida)</h3>
+          <label>
+            Escolher fluxo
+            <select id="map-selector"></select>
+          </label>
+          <div id="map-canvas" class="canvas"></div>
+        </article>
+      </section>
+    </main>
+
+    <footer>
+      <button id="seed">Carregar exemplo Protheus</button>
+      <button id="clear">Limpar tudo</button>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>

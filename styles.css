@@ -1,0 +1,145 @@
+:root {
+  color-scheme: dark;
+  --bg: #0f172a;
+  --panel: #111827;
+  --line: #374151;
+  --ink: #e5e7eb;
+  --muted: #9ca3af;
+  --accent: #22d3ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Inter, Segoe UI, Roboto, sans-serif;
+  color: var(--ink);
+  background: linear-gradient(180deg, #0b1223 0%, var(--bg) 30%, #030712 100%);
+}
+
+header,
+main,
+footer {
+  width: min(1100px, 95vw);
+  margin: 0 auto;
+}
+
+header {
+  padding: 2rem 0 1rem;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0 0 0.7rem;
+}
+
+main {
+  display: grid;
+  gap: 1rem;
+  padding-bottom: 2rem;
+}
+
+.panel {
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--panel) 92%, black);
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 1rem;
+}
+
+.grid-form.compact {
+  margin-top: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+}
+
+input,
+select,
+button {
+  border: 1px solid var(--line);
+  background: #0b1020;
+  color: var(--ink);
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+}
+
+button {
+  cursor: pointer;
+  font-weight: 700;
+  background: linear-gradient(90deg, #0369a1, #0e7490);
+}
+
+small {
+  color: var(--muted);
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.35rem;
+}
+
+.list li {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.9rem;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.map {
+  margin-top: 1rem;
+  border-top: 1px solid var(--line);
+  padding-top: 1rem;
+}
+
+.canvas {
+  margin-top: 0.8rem;
+  border: 1px dashed #4b5563;
+  border-radius: 10px;
+  padding: 0.8rem;
+  min-height: 120px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.node {
+  border: 1px solid #0e7490;
+  background: #0c4a6e;
+  border-radius: 999px;
+  padding: 0.45rem 0.8rem;
+  font-weight: 600;
+}
+
+.arrow {
+  color: #67e8f9;
+}
+
+footer {
+  display: flex;
+  gap: 0.7rem;
+  padding-bottom: 2rem;
+}
